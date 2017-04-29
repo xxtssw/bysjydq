@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<title>视频页</title>
+		<style type="text/css">
+			body{
+				display: -webkit-flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				background-color: #F0AD4E;
+			}
+			input{
+				width: 80%;
+				height: 3rem;
+			}
+			video{
+				width: 100%;
+				margin: 2px 0;
+				background-color: #269ABC;
+			}
+		</style>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript">
+			function ldvideo(){
+     			var selectFile = document.getElementById("videoget").files[0];
+				var fr = new FileReader();
+				fr.readAsDataURL(selectFile);
+				fr.onload = function(){
+					var play = document.getElementById("videoplay");
+				    play.setAttribute("src",this.result);
+				}
+			}
+			
+			function zhuye(){
+				open("index.html");
+				this.close();
+			}
+			
+			function humor(){
+				alert("搞笑的Joey😂");
+				var play = document.getElementById("videoplay");
+				play.setAttribute("src","littlefun.mp4")
+			}
+		</script>
+	</head>
+	<body>
+		<input type="file" id="videoget" onchange="ldvideo()" />
+	    <video id="videoplay" autoplay="autoplay" controls="controls"></video>
+	    <label onclick="humor()">支持MP4/WebM/Ogg视频与MP3等部分音频</label>
+	    <label onclick="zhuye()">点此回主界面</label>
+	</body>
+</html>
